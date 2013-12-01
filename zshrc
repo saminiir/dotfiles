@@ -81,7 +81,5 @@ RPROMPT='${vim_mode}'
 # 10ms for key sequences
 KEYTIMEOUT=1
 
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-
 # Prevent tmux window title fubaring
 DISABLE_AUTO_TITLE=true
