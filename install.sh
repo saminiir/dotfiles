@@ -3,7 +3,7 @@
 
 DIR="$HOME/dotfiles"
 OLD_DIR="$HOME/dotfiles_old"
-FILES="vimrc zshrc"
+FILES="vimrc zshrc tigrc"
 
 echo "Creating $OLD_DIR for backup of any existing dotfiles in $HOME"
 mkdir -p $OLD_DIR
