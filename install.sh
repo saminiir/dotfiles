@@ -1,8 +1,8 @@
 #!/bin/bash
 # Taken from http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
 
-DIR="~/dotfiles"
-OLD_DIR="~/dotfiles_old"
+DIR="$HOME/dotfiles"
+OLD_DIR="$HOME/dotfiles_old"
 FILES="vimrc zshrc"
 
 echo "Creating $OLD_DIR for backup of any existing dotfiles in $HOME"
@@ -14,8 +14,8 @@ cd $DIR
 echo "..done!"
 
 for file in $FILES; do
-  echo "Moving any existing dotfiles from ~ to $OLD_DIR"
-  mv "~/.$file $OLD_DIR"
+  echo "Moving any existing dotfiles from $HOME to $OLD_DIR"
+  mv "$HOME/.$file" "$OLD_DIR"
   echo "Creating symlinks"
-  ln -s "$DIR/$file" "~/.$file"
+  ln -s "$DIR/$file" "$HOME/.$file"
 done
