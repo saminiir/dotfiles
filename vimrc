@@ -83,8 +83,8 @@ set t_vb=
 set tm=500
 
 " Display max columns with long lines
-set synmaxcol=156
 
+set synmaxcol=1024
 " Folding
 set foldmethod=indent
 
