@@ -367,6 +367,9 @@ let g:Tex_ExecuteUNIXViewerInForeground = 1
 let g:Tex_ViewRule_ps = 'open -a Preview'
 let g:Tex_ViewRule_pdf = 'open -a Preview'
 let g:Tex_ViewRule_dvi = 'open -a /Applications/texniscope.app'
+let g:tex_fold_enabled = 1
+" Insert folding block for latex
+let @f='i%{{{\begin{comment}\end{comment}%}}}kO'
 
 " Grep / Ag
 
