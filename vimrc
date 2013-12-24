@@ -105,11 +105,6 @@ set t_Co=256
 set background=dark
 colorscheme distinguished 
 
-" Custom color sets for distinguished - Should probably be defined in the colorscheme :)
-highlight SyntasticWarning ctermbg=none ctermfg=none 
-highlight SyntasticErrorSign guifg=white guibg=red
-highlight Search term=reverse ctermfg=white ctermbg=darkyellow gui=bold,underline
-highlight Visual term=reverse ctermfg=black ctermbg=lightgrey guifg=#585858 guibg=#dadada
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -380,3 +375,10 @@ nmap <Leader>G :Ag <C-R><C-W><CR>
 set tags=tags;/
 filetype plugin indent on
 syntax on
+
+" Custom color sets for distinguished - Should probably be defined in the colorscheme :)
+highlight SyntasticErrorSign ctermfg=202 ctermbg=52 guifg=white guibg=red
+highlight SyntasticWarning ctermfg=none ctermbg=none gui=bold guifg=NONE guibg=NONE
+highlight SyntasticError ctermfg=None ctermbg=None gui=bold guifg=#ffff87 guibg=#875f00
+highlight Search term=reverse ctermfg=white ctermbg=darkyellow gui=bold,underline
+highlight Visual term=reverse ctermfg=black ctermbg=lightgrey guifg=#585858 guibg=#dadada
