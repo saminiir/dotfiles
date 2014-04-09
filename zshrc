@@ -40,7 +40,7 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git colored-man)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.bashrc
@@ -85,3 +85,5 @@ KEYTIMEOUT=1
 
 # Prevent tmux window title fubaring
 DISABLE_AUTO_TITLE=true
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

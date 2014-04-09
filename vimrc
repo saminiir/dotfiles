@@ -1,4 +1,5 @@
 call pathogen#infect() 
+call pathogen#helptags() 
 
 set nocompatible
 set t_Co=256
@@ -37,6 +38,7 @@ set wildmenu
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
+set wildignore+=*/node_modules/*
 
 "Always show current position
 set ruler
@@ -142,6 +144,10 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
+" Whitespace preference by filetype
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype jade setlocal ts=2 sts=2 sw=2
+
 " Linebreak on 500 characters
 set lbr
 set tw=500
@@ -218,7 +224,7 @@ set showmode
 
 " Specify the behavior when switching between buffers 
 try
-  set switchbuf=useopen,usetab,newtab
+  set switchbuf=useopen,usetab
   set stal=2
 catch
 endtry
@@ -353,6 +359,14 @@ let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 set runtimepath^=~/.vim/bundle/ctrlp.vimset runtimepath^=~/.vim/bundle/ctrlp.vim
 
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
+
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
@@ -385,3 +399,7 @@ highlight SyntasticWarning ctermfg=none ctermbg=none gui=bold guifg=NONE guibg=N
 highlight SyntasticError ctermfg=None ctermbg=None gui=bold guifg=#ffff87 guibg=#875f00
 highlight Search term=reverse ctermfg=white ctermbg=darkyellow gui=bold,underline
 highlight Visual term=reverse ctermfg=black ctermbg=lightgrey guifg=#585858 guibg=#dadada
+
+" Tag paths
+autocmd FileType haskell setlocal tags+=/Users/sailniir/code/haskell/packages-base/tags
+

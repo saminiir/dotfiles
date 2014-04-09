@@ -1,7 +1,8 @@
 bind status D !@?rm %(file)
 bind branch D !@?git branch -D %(branch)
 bind generic 9 !@sh -c "printf %(commit) | pbcopy && echo Copied commit ID %(commit) to clipboard!"
-bind main B !git rebase -i %(commit)^
+bind main J !sh -c "git stash && git rebase -i %(commit)^ && git stash pop"
+bind main K !sh -c "git stash && git rebase -i %(commit)^"
 
 bind generic ^d scroll-page-down
 bind generic ^u scroll-page-up
@@ -13,6 +14,8 @@ bind status S !?git stash save --keep-index %(prompt)
 
 bind status ^g !echo %(directory)%(file)
 
-
 # Colors 
 color cursor yellow red bold
+color date yellow black normal
+color graph-commit magenta black normal
+color main-ref magenta black normal
