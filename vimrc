@@ -1,4 +1,5 @@
 call pathogen#infect() 
+call pathogen#helptags() 
 
 set nocompatible
 set t_Co=256
@@ -37,6 +38,7 @@ set wildmenu
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
+set wildignore+=*/node_modules/*
 
 "Always show current position
 set ruler
@@ -83,10 +85,11 @@ set t_vb=
 set tm=500
 
 " Display max columns with long lines
-set synmaxcol=156
+set synmaxcol=1024
 
 " Folding
-set foldmethod=indent
+set foldmarker={{{,}}}
+set foldmethod=marker
 
 " Fix syntax highlighting
 set nocursorcolumn
@@ -104,11 +107,6 @@ set t_Co=256
 set background=dark
 colorscheme distinguished 
 
-" Custom color sets for distinguished - Should probably be defined in the colorscheme :)
-highlight SyntasticWarning ctermbg=none ctermfg=none 
-highlight SyntasticErrorSign guifg=white guibg=red
-highlight Search term=reverse ctermfg=white ctermbg=darkyellow gui=bold,underline
-highlight Visual term=reverse ctermfg=black ctermbg=lightgrey guifg=#585858 guibg=#dadada
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -145,6 +143,10 @@ set smarttab
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
+
+" Whitespace preference by filetype
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype jade setlocal ts=2 sts=2 sw=2
 
 " Linebreak on 500 characters
 set lbr
@@ -222,7 +224,7 @@ set showmode
 
 " Specify the behavior when switching between buffers 
 try
-  set switchbuf=useopen,usetab,newtab
+  set switchbuf=useopen,usetab
   set stal=2
 catch
 endtry
@@ -357,6 +359,14 @@ let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 set runtimepath^=~/.vim/bundle/ctrlp.vimset runtimepath^=~/.vim/bundle/ctrlp.vim
 
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
+
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
@@ -371,6 +381,9 @@ let g:Tex_ExecuteUNIXViewerInForeground = 1
 let g:Tex_ViewRule_ps = 'open -a Preview'
 let g:Tex_ViewRule_pdf = 'open -a Preview'
 let g:Tex_ViewRule_dvi = 'open -a /Applications/texniscope.app'
+let g:tex_fold_enabled = 1
+" Insert folding block for latex
+let @f='i%{{{\begin{comment}\end{comment}%}}}kO'
 
 " Grep / Ag
 
@@ -379,3 +392,14 @@ nmap <Leader>G :Ag <C-R><C-W><CR>
 set tags=tags;/
 filetype plugin indent on
 syntax on
+
+" Custom color sets for distinguished - Should probably be defined in the colorscheme :)
+highlight SyntasticErrorSign ctermfg=202 ctermbg=52 guifg=white guibg=red
+highlight SyntasticWarning ctermfg=none ctermbg=none gui=bold guifg=NONE guibg=NONE
+highlight SyntasticError ctermfg=None ctermbg=None gui=bold guifg=#ffff87 guibg=#875f00
+highlight Search term=reverse ctermfg=white ctermbg=darkyellow gui=bold,underline
+highlight Visual term=reverse ctermfg=black ctermbg=lightgrey guifg=#585858 guibg=#dadada
+
+" Tag paths
+autocmd FileType haskell setlocal tags+=/Users/sailniir/code/haskell/packages-base/tags
+
