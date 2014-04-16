@@ -1,0 +1,163 @@
+# Colorscheme
+source ~/.mutt/colors.muttrc
+
+##### Account Setup Information 
+set from = "username@email.com"
+set realname = ""
+set imap_user = ""
+set imap_pass = $my_pass 
+set folder = $imap
+set spoolfile = "+INBOX"
+set postponed = "+INBOX.Drafts"
+set record="+INBOX.Sent Items"
+set smtp_url=$stmp_url
+set smtp_pass = $my_pass
+set envelope_from=yes
+
+##### Identities
+alias YourWorkAddress	Your Name, MD	<youremail@yourwork.com>
+alias YourPersonalAddress	Your Name	<youremail@yourhomeaddress.com>
+# Now, when you hit v while composing, you can select your email address you're sending from.  Make as many aliases as you want.
+macro compose v "<edit-from>^Uidentity_<tab>" "Select from"
+
+##### Lists
+subscribe offlineimap-project@lists.alioth.debian.org mutt-users@mutt.org
+
+##### Mail setup
+set copy=yes
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
+set move = no
+set timeout=15
+set mail_check=2
+set imap_keepalive = 900
+set sort = 'threads'
+set imap_check_subscribed
+set hidden_host=yes 
+
+set pipe_decode          # strip headers and eval mimes when piping
+set thorough_search      # strip headers and eval mimes before searching
+
+bind index N search-opposite
+bind pager N search-opposite
+
+auto_view text/html application/pdf application/x-pdf application/msword application/x-msword application/vnd.ms-powerpoint application/vnd.ms-excel image/* application/x-zip-compressed application/zip application/x-zip application/gzip
+unset wait_key
+set implicit_autoview = yes
+
+set editor="mvim -f +/^$ ++1"
+
+macro pager \Cu "|urlview<enter>" "call urlview to open links"
+
+mailboxes "=inbox"
+
+# Auto-complete receiver information
+set query_command = "contacts -Sf '%eTOKEN%n' '%s' | sed -e 's/TOKEN/\t/g'"
+bind editor <Tab> complete-query
+bind editor ^T    complete
+
+# Sidebar Patch --------------------------------------
+set sidebar_delim   = '  │'
+set sidebar_visible = yes
+set sidebar_width   = 40
+set sidebar_format = " %B %> %S"
+
+# Status Bar -----------------------------------------
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+# Header Options -------------------------------------
+ignore *                                # ignore all headers
+unignore from: to: cc: date: subject:   # show only these
+unhdr_order *                           # some distros order things by default
+hdr_order from: to: cc: date: subject:  # and in this order
+
+# Index View Options ---------------------------------
+set date_format = "%m/%d"
+set index_format = "[%Z]  %D  %-50.50F  %s"
+set sort_aux = reverse-last-date-received  # like gmail
+set uncollapse_jump                        # don't collapse on an unread message
+set sort_re                                # thread based on regex
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+# Pager View Options ---------------------------------
+set pager_index_lines = 10 # number of index lines to show
+set pager_context = 3      # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+
+# Compose View Options -------------------------------
+set realname = "Sami Niiranen"          # who am i?
+set sig_dashes                       # dashes before sig
+set edit_headers                     # show headers when composing
+set fast_reply                       # skip to compose when replying
+set askcc                            # ask for CC:
+set fcc_attach                       # save attachments with the body
+unset mime_forward                   # forward attachments as part of body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set attribution = "On %d, %n wrote:" # format of quoting header
+set reply_to                         # reply to Reply to: field
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+set forward_quote                    # include message in forwards
+
+# Pager Key Bindings ---------------------------------
+bind pager k  previous-line
+bind pager j  next-line
+bind pager gg top
+bind pager G  bottom
+
+bind pager R  group-reply
+
+# View attachments properly.
+bind attach <return> view-mailcap
+
+# Vi-like bindings
+
+# Generic
+bind generic l select-entry
+bind generic <right> select-entry
+
+# Index
+bind index l display-message
+bind index h change-folder
+bind index <right> display-message
+bind index <left> change-folder
+bind index H display-toggle-weed
+bind index gg       first-entry
+bind index G        last-entry
+# To got to the inbox just press ,
+macro index , '<change-folder>!^M'
+# Ctrl-R to mark all as read
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+
+# Pager
+bind pager j next-line
+bind pager k previous-line
+bind pager h exit
+bind pager l view-attachments
+bind pager <down> next-line
+bind pager <up> previous-line
+bind pager <left> exit
+bind pager <right> view-attachments
+bind pager H display-toggle-weed
+macro pager , '<change-folder>!^M'
+
+# Attach
+bind attach l view-attach
+bind attach <right> view-attach
+bind attach h exit
+bind attach <left> exit
+bind attach H display-toggle-weed
+
+# Compose
+bind compose l view-attach
+bind compose <right> view-attach
