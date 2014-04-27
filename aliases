@@ -3,6 +3,7 @@
 alias t='tig'
 alias ts='tig status'
 alias h='history'
+alias m='man'
 
 # Custom functions
 
