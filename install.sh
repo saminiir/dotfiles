@@ -3,7 +3,7 @@
 
 DIR="$HOME/dotfiles"
 OLD_DIR="$HOME/dotfiles_old"
-FILES="vimrc zshrc tigrc tmux.conf muttrc"
+FILES="vimrc zshrc tigrc tmux.conf muttrc aliases"
 
 echo "Creating $OLD_DIR for backup of any existing dotfiles in $HOME"
 mkdir -p $OLD_DIR
