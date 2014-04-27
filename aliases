@@ -1,0 +1,11 @@
+# Custom aliases
+
+alias t='tig'
+alias ts='tig status'
+alias h='history'
+
+# Custom functions
+
+function f() {
+    find . -iname "*$1*" 2>/dev/null 
+}
