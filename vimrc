@@ -384,12 +384,15 @@ let g:tex_fold_enabled = 1
 " Insert folding block for latex
 let @f='i%{{{\begin{comment}\end{comment}%}}}kO'
 
-" Grep / Ag
+" Vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/'},
+                    \ {'path': '~/vimwiki/leisure/'}]
 
+
+" Grep / Ag
 nmap <Leader>G :Ag <C-R><C-W><CR>
 
 set tags=tags;/
-filetype plugin indent on
 syntax on
 
 " Custom color sets for distinguished - Should probably be defined in the colorscheme :)
