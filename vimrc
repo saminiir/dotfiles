@@ -30,7 +30,7 @@ nmap <leader>w :w!<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
+" Add padding of 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
 " Turn on the WiLd menu
@@ -48,8 +48,6 @@ set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
 set hidden
-
-set nowrap        " don't wrap lines
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -99,14 +97,13 @@ syntax sync minlines=256
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" n
+
 " Enable syntax highlighting
 syntax enable
 
 set t_Co=256
 set background=dark
 colorscheme solarized 
-
 
 " Set extra options when running in GUI mode
 if has("gui_running")
