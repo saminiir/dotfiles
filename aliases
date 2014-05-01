@@ -12,3 +12,8 @@ alias m='man'
 function f() {
     find . -iname "*$1*" 2>/dev/null 
 }
+
+function sleep_now() {
+    slock &
+    xset dpms force suspend
+}
