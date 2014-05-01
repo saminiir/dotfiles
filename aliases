@@ -1,3 +1,5 @@
+alias startx='startx &> ~/.xlog'
+
 # Custom aliases
 
 alias t='tig'
