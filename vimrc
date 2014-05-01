@@ -275,7 +275,9 @@ endfunction
 
 " Custom settings
 
+" Both relative and absolute line numbering is possible since version 7.4!
 set relativenumber
+set number 
 
 " Closing brackets, parenthesis..
 function! ConditionalPairMap(open, close)
