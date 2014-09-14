@@ -1,3 +1,5 @@
+set shell=/bin/bash
+
 call pathogen#infect() 
 call pathogen#helptags() 
 
@@ -168,51 +170,11 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 map j gj
 map k gk
 
-" Bind window resize to + and -
-map + <C-W>+
-map - <C-W>-
-
-nnoremap <Space> :
-
 " Clear highlight
 nmap <silent> ,/ :nohlsearch<CR>
 
-" Easy window navigation
-map <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
-
-" Smart way to move between windows
-"map <S-j> <C-W>j
-"map <S-k> <C-W>k
-map H <C-W>h
-map L <C-W>l
-
-" Close the current buffer
-map <leader>bd :Bclose<cr>
-
-" Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
-
-" Exit with double j's
-imap jk <Esc>
-
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Enable paste mode to prevent auto-indentation
 nnoremap <F2> :set invpaste paste?<CR>
@@ -246,21 +208,6 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
 
 " Returns true if paste mode is enabled
 function! HasPaste()
@@ -290,9 +237,6 @@ inoremap <expr> { ConditionalPairMap('{', '}')
 inoremap <expr> ( ConditionalPairMap('(', ')')
 inoremap <expr> [ ConditionalPairMap('[', ']')
 
-noremap H :tabprevious<CR>
-noremap L :tabnext<CR>
-
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
 
 " Syntastic 
@@ -300,13 +244,9 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_ignore_files=['.*\.min\..*']
 
-
 let g:tagbar_type_javascript = {
     \ 'ctagsbin' : '/Users/sailniir/code/doctorjs/lib/jsctags'
 \ }
-
-map <C-n> :NERDTreeToggle<CR>
-nmap <F8> :TagbarToggle<CR> 
 
 if executable('coffeetags')
   let g:tagbar_type_coffee = {
@@ -324,9 +264,6 @@ if executable('coffeetags')
         \ }
 endif
 
-cnoremap <C-p> <Up> 
-cnoremap <C-n> <Down>
-
 " Navigate buffers
 nnoremap <silent> [b :bprevious<CR> 
 nnoremap <silent> ]b :bnext<CR> 
@@ -340,10 +277,6 @@ nnoremap <silent> [C :cfirst<CR>
 nnoremap <silent> ]C :clast<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
-" Copy
-nnoremap Y y$
-
 
 " NeoComplete
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
