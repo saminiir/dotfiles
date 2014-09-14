@@ -7,11 +7,16 @@ alias ts='tig status'
 alias h='history'
 alias m='man'
 alias o='xdg-open'
+alias s='source'
 
 # Custom functions
 
 function f() {
     find . -iname "*$1*" 2>/dev/null 
+}
+
+function p() {
+    ps -ef | sed -e '1p' -e "/$1/!d"
 }
 
 function sleep_now() {
