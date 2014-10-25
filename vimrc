@@ -301,6 +301,10 @@ let g:vimwiki_list = [{'path': '~/vimwiki/'},
 " Grep / Ag
 nmap <Leader>G :Ag <C-R><C-W><CR>
 
+" AnkiCard cloze-tag surrounding
+nnoremap <Leader>Sc ciw{{c1::<C-r>"}}<Esc>
+vnoremap <Leader>Sc c{{c1::<C-r>"}}<Esc>
+
 set tags=tags;/
 syntax on
 
