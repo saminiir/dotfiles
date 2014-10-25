@@ -26,9 +26,6 @@ set autoread
 " Load matchit
 runtime macros/matchit.vim
 
-" Fast saving
-nmap <leader>w :w!<cr>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -103,17 +100,8 @@ syntax sync minlines=256
 " Enable syntax highlighting
 syntax enable
 
-set t_Co=256
 set background=dark
 colorscheme solarized 
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -121,6 +109,13 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 set ff=unix
+
+" Custom color sets for distinguished - Should probably be defined in the colorscheme :)
+highlight SyntasticErrorSign ctermfg=202 ctermbg=52 guifg=white guibg=red
+highlight SyntasticWarning ctermfg=none ctermbg=none gui=bold guifg=NONE guibg=NONE
+highlight SyntasticError ctermfg=None ctermbg=None gui=bold guifg=#ffff87 guibg=#875f00
+highlight Search term=reverse ctermfg=white ctermbg=darkyellow gui=bold,underline
+highlight Visual term=reverse ctermfg=black ctermbg=lightgrey guifg=#585858 guibg=#dadada
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -217,25 +212,9 @@ function! HasPaste()
     return ''
 endfunction
 
-" Custom settings
-
 " Both relative and absolute line numbering is possible since version 7.4!
 set relativenumber
 set number 
-
-" Closing brackets, parenthesis..
-function! ConditionalPairMap(open, close)
-  let line = getline('.')
-  let col = col('.')
-  if col < col('$') || stridx(line, a:close, col + 1) != -1
-    return a:open
-  else
-    return a:open . a:close . repeat("\<left>", len(a:close))
-  endif
-endf
-inoremap <expr> { ConditionalPairMap('{', '}')
-inoremap <expr> ( ConditionalPairMap('(', ')')
-inoremap <expr> [ ConditionalPairMap('[', ']')
 
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
 
@@ -275,8 +254,6 @@ nnoremap <silent> [c :cprev<CR>
 nnoremap <silent> ]c :cnext<CR> 
 nnoremap <silent> [C :cfirst<CR> 
 nnoremap <silent> ]C :clast<CR>
-
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " NeoComplete
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
@@ -321,19 +298,11 @@ let @f='i%{{{\begin{comment}\end{comment}%}}}kO'
 let g:vimwiki_list = [{'path': '~/vimwiki/'},
                     \ {'path': '~/vimwiki/leisure/'}]
 
-
 " Grep / Ag
 nmap <Leader>G :Ag <C-R><C-W><CR>
 
 set tags=tags;/
 syntax on
-
-" Custom color sets for distinguished - Should probably be defined in the colorscheme :)
-highlight SyntasticErrorSign ctermfg=202 ctermbg=52 guifg=white guibg=red
-highlight SyntasticWarning ctermfg=none ctermbg=none gui=bold guifg=NONE guibg=NONE
-highlight SyntasticError ctermfg=None ctermbg=None gui=bold guifg=#ffff87 guibg=#875f00
-highlight Search term=reverse ctermfg=white ctermbg=darkyellow gui=bold,underline
-highlight Visual term=reverse ctermfg=black ctermbg=lightgrey guifg=#585858 guibg=#dadada
 
 " Tag paths
 autocmd FileType haskell setlocal tags+=/Users/sailniir/code/haskell/packages-base/tags
