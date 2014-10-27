@@ -8,6 +8,7 @@ alias h='history'
 alias m='man'
 alias o='xdg-open'
 alias s='source'
+alias toJson='python -mjson.tool'
 
 # Custom functions
 
