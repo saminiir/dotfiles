@@ -298,6 +298,8 @@ let @f='i%{{{\begin{comment}\end{comment}%}}}kO'
 let g:vimwiki_list = [{'path': '~/vimwiki/'},
                     \ {'path': '~/vimwiki/leisure/'}]
 
+nmap <leader>tt <Plug>VimwikiToggleListItem
+
 " Grep / Ag
 nmap <Leader>G :Ag <C-R><C-W><CR>
 
