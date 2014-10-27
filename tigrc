@@ -4,9 +4,6 @@ bind generic 9 !@sh -c "printf %(commit) | pbcopy && echo Copied commit ID %(com
 bind main J !sh -c "git stash && git rebase -i %(commit)^ && git stash pop"
 bind main K !sh -c "git stash && git rebase -i %(commit)^"
 
-bind generic <Ctrl-d> scroll-page-down
-bind generic <Ctrl-u> scroll-page-up
-
 bind stash A !?git stash apply %(stash)
 bind stash D !?git stash drop %(stash)
 
