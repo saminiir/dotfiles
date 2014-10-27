@@ -5,6 +5,7 @@ alias t='tig'
 alias ts='tig status'
 alias h='history'
 alias m='man'
+alias toJson='python -mjson.tool'
 
 # Custom functions
 #Firefox command
