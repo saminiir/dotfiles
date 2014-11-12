@@ -223,26 +223,6 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_ignore_files=['.*\.min\..*']
 
-let g:tagbar_type_javascript = {
-    \ 'ctagsbin' : '/Users/sailniir/code/doctorjs/lib/jsctags'
-\ }
-
-if executable('coffeetags')
-  let g:tagbar_type_coffee = {
-        \ 'ctagsbin' : 'coffeetags',
-        \ 'ctagsargs' : '',
-        \ 'kinds' : [
-        \ 'f:functions',
-        \ 'o:object',
-        \ ],
-        \ 'sro' : ".",
-        \ 'kind2scope' : {
-        \ 'f' : 'object',
-        \ 'o' : 'object',
-        \ }
-        \ }
-endif
-
 " Navigate buffers
 nnoremap <silent> [b :bprevious<CR> 
 nnoremap <silent> ]b :bnext<CR> 
