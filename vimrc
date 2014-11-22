@@ -292,3 +292,59 @@ syntax on
 " Tag paths
 autocmd FileType haskell setlocal tags+=/Users/sailniir/code/haskell/packages-base/tags
 
+" Cscope
+if has("cscope")
+    set csprg=/usr/bin/cscope
+    set csto=0
+    set cst
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
+
+" 0 or s: Find this C symbol
+" 1 or g: Find this definition
+" 2 or d: Find functions called by this function
+" 3 or c: Find functions calling this function
+" 4 or t: Find this text string
+" 6 or e: Find this egrep pattern
+" 7 or f: Find this file
+" 8 or i: Find files #including this file
+map g<C-]> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
+map g<C-\> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+" Using 'CTRL-spacebar' then a search type makes the vim window
+" split horizontally, with search result displayed in
+" the new window.
+nmap g<C-_>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap g<C-_>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap g<C-_>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap g<C-_>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap g<C-_>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap g<C-_>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap g<C-_>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap g<C-_>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+
+" Hitting CTRL-space *twice* before the search type does a vertical
+" split instead of a horizontal one
+nmap g<C-_><C-_>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap g<C-_><C-_>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap g<C-_><C-_>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap g<C-_><C-_>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap g<C-_><C-_>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap g<C-_><C-_>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap g<C-_><C-_>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
