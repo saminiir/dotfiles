@@ -366,3 +366,9 @@ nmap g<C-_><C-_>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
 nmap g<C-_><C-_>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
 nmap g<C-_><C-_>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap g<C-_><C-_>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+
+" Delay for moving with hjkl so that they are not overused
+noremap hh <nop>
+noremap jj <nop>
+noremap kk <nop>
+noremap ll <nop>
