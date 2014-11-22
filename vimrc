@@ -213,7 +213,6 @@ function! HasPaste()
 endfunction
 
 " Both relative and absolute line numbering is possible since version 7.4!
-set relativenumber
 set number 
 
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
