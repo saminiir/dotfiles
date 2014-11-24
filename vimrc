@@ -15,6 +15,7 @@ hi CursorLine term=none cterm=none ctermbg=3      " adjust color
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=700
+set number 
 
 " Enable filetype plugins
 filetype plugin on
@@ -212,11 +213,6 @@ function! HasPaste()
     return ''
 endfunction
 
-" Both relative and absolute line numbering is possible since version 7.4!
-set number 
-
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
-
 " Syntastic 
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
@@ -234,17 +230,6 @@ nnoremap <silent> ]c :cnext<CR>
 nnoremap <silent> [C :cfirst<CR> 
 nnoremap <silent> ]C :clast<CR>
 
-" NeoComplete
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Don't use neocomplcache.
-let g:neocomplcache_enable_at_startup = 0
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 set runtimepath^=~/.vim/bundle/ctrlp.vimset runtimepath^=~/.vim/bundle/ctrlp.vim
 
 let g:ctrlp_user_command = {
