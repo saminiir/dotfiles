@@ -232,6 +232,9 @@ nnoremap <silent> ]C :clast<CR>
 
 set runtimepath^=~/.vim/bundle/ctrlp.vimset runtimepath^=~/.vim/bundle/ctrlp.vim
 
+" Ctrl-p options
+
+let g:ctrlp_regexp = 1
 let g:ctrlp_user_command = {
   \ 'types': {
     \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others'],
