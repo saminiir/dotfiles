@@ -4,17 +4,14 @@ source "openssl des3 -d -in ~/.sec/.my-pwds |"
 source ~/.mutt/colors.muttrc
 
 ##### Account Setup Information 
-set from = "saminiir@gmail.com"
-set realname = ""
-set imap_user = "saminiir"
-set imap_pass = $my_gpw1 
-set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
-set postponed = "+INBOX.Drafts"
-set record="+INBOX.Sent Items"
-set smtp_url="smtps://saminiir@smtp.gmail.com:465/"
-set smtp_pass = $my_gpw1
-set envelope_from=yes
+# Here we use the $folder variable that has just been set in the sourced file.
+# # We must set it right now otherwise the 'folder' variable will change in the next sourced file.
+#folder-hook $folder 'source ~/dotfiles/mutt/saminiir'
+
+#source ~/dotfiles/mutt/zamzum
+source ~/dotfiles/mutt/saminiir
+folder-hook saminiir/* 'source ~/dotfiles/mutt/saminiir'
+folder-hook zamzum/* 'source ~/dotfiles/mutt/zamzum'
 
 # This fixes "No authenticators available" with Gmail
 set smtp_authenticators = 'gssapi:login'
@@ -35,6 +32,7 @@ set message_cachedir = ~/.mutt/cache/bodies
 set certificate_file = ~/.mutt/certificates
 set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
 set move = no
+set mbox_type=Maildir
 set timeout=15
 set mail_check=2
 set imap_keepalive = 900
@@ -56,7 +54,16 @@ set editor="vim -f +/^$ ++1"
 
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
 
-mailboxes "=inbox"
+mailboxes "+-- saminiir --------------" \
+          +saminiir/INBOX \
+          +saminiir/Archive \
+          +saminiir/Drafts \
+          +saminiir/Sent\ Messages \
+          "+-- zamzum ----------------" \
+          +zamzum/INBOX \
+          +zamzum/Archive \
+          +zamzum/Drafts \
+          +zamzum/Sent\ Messages \
 
 # Auto-complete receiver information
 set query_command = "contacts -Sf '%eTOKEN%n' '%s' | sed -e 's/TOKEN/\t/g'"
@@ -64,6 +71,16 @@ bind editor <Tab> complete-query
 bind editor ^T    complete
 
 # Sidebar Patch --------------------------------------
+set sidebar_visible = yes
+macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+
+# Ctrl-n, Ctrl-p to select next, previous folder.
+# Ctrl-o to open selected folder.
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+
 set sidebar_delim   = '  │'
 set sidebar_visible = yes
 set sidebar_width   = 40

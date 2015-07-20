@@ -1,0 +1,15 @@
+set from = "saminiir@gmail.com"
+set realname = "Sami Niiranen"
+set imap_user = "saminiir"
+set imap_pass = $my_gpw1 
+set folder = "imaps://saminiir@imap.gmail.com:993"
+set spoolfile = "+saminiir/INBOX"
+set postponed = "+saminiir/Drafts"
+set record = "+saminiir/Sent Items"
+set mbox = "+saminiir/Archive"
+set smtp_url="smtps://saminiir@smtp.gmail.com:465/"
+set smtp_pass = $my_gpw1
+set envelope_from=yes
+
+## Hook -- IMPORTANT!
+#account-hook $folder "set imap_user=saminiir@gmail.com imap_pass=$my_gpw1"
