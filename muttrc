@@ -1,18 +1,23 @@
+# Auth
+source "openssl des3 -d -in ~/.sec/.my-pwds |"
 # Colorscheme
 source ~/.mutt/colors.muttrc
 
 ##### Account Setup Information 
-set from = "username@email.com"
+set from = "saminiir@gmail.com"
 set realname = ""
-set imap_user = ""
-set imap_pass = $my_pass 
-set folder = $imap
+set imap_user = "saminiir"
+set imap_pass = $my_gpw1 
+set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
 set postponed = "+INBOX.Drafts"
 set record="+INBOX.Sent Items"
-set smtp_url=$stmp_url
-set smtp_pass = $my_pass
+set smtp_url="smtps://saminiir@smtp.gmail.com:465/"
+set smtp_pass = $my_gpw1
 set envelope_from=yes
+
+# This fixes "No authenticators available" with Gmail
+set smtp_authenticators = 'gssapi:login'
 
 ##### Identities
 alias YourWorkAddress	Your Name, MD	<youremail@yourwork.com>
@@ -47,7 +52,7 @@ auto_view text/html application/pdf application/x-pdf application/msword applica
 unset wait_key
 set implicit_autoview = yes
 
-set editor="mvim -f +/^$ ++1"
+set editor="vim -f +/^$ ++1"
 
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
 
