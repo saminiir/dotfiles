@@ -86,10 +86,6 @@ set tm=500
 " Display max columns with long lines
 set synmaxcol=1024
 
-" Folding
-set foldmarker={{{,}}}
-set foldmethod=marker
-
 " Fix syntax highlighting
 set nocursorcolumn
 set nocursorline
