@@ -244,7 +244,10 @@ set grepprg=grep\ -nH\ $*
 
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/'},
-                    \ {'path': '~/vimwiki/leisure/'}]
+                    \ {'path': '~/vimwiki/leisure/'},
+                    \ {'path': '~/vimwiki/pomodoro/'},
+                    \ {'path': '~/vimwiki/projects/'},
+                    \ {'path': '~/vimwiki/software/'}]
 
 nmap <leader>tt <Plug>VimwikiToggleListItem
 
