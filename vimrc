@@ -8,7 +8,6 @@ set t_Co=256
 set term=screen-256color
 
 set cul                                           " highlight current line
-hi CursorLine term=none cterm=none ctermbg=3      " adjust color
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
