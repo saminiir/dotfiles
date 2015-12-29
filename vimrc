@@ -242,19 +242,6 @@ let g:ctrlp_user_command = {
 " program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
 
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-let g:Tex_TreatMacViewerAsUNIX = 1
-let g:Tex_ExecuteUNIXViewerInForeground = 1
-let g:Tex_ViewRule_ps = 'open -a Preview'
-let g:Tex_ViewRule_pdf = 'open -a Preview'
-let g:Tex_ViewRule_dvi = 'open -a /Applications/texniscope.app'
-let g:tex_fold_enabled = 1
-" Insert folding block for latex
-let @f='i%{{{\begin{comment}\end{comment}%}}}kO'
-
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/'},
                     \ {'path': '~/vimwiki/leisure/'}]
