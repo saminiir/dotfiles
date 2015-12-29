@@ -104,7 +104,6 @@ syntax sync minlines=256
 syntax enable
 
 set background=dark
-colorscheme distinguished 
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -112,13 +111,6 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 set ff=unix
-
-" Custom color sets for distinguished - Should probably be defined in the colorscheme :)
-highlight SyntasticErrorSign ctermfg=202 ctermbg=52 guifg=white guibg=red
-highlight SyntasticWarning ctermfg=none ctermbg=none gui=bold guifg=NONE guibg=NONE
-highlight SyntasticError ctermfg=None ctermbg=None gui=bold guifg=#ffff87 guibg=#875f00
-highlight Search term=reverse ctermfg=white ctermbg=darkyellow gui=bold,underline
-highlight Visual term=reverse ctermfg=black ctermbg=lightgrey guifg=#585858 guibg=#dadada
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
