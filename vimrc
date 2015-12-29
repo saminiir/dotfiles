@@ -261,9 +261,6 @@ vnoremap <Leader>Sc c{{c1::<C-r>"}}<Esc>
 set tags=tags;/
 syntax on
 
-" Tag paths
-autocmd FileType haskell setlocal tags+=/Users/sailniir/code/haskell/packages-base/tags
-
 " Cscope
 if has("cscope")
     set csprg=/usr/bin/cscope
