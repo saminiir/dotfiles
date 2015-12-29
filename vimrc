@@ -13,6 +13,8 @@ hi CursorLine term=none cterm=none ctermbg=3      " adjust color
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set cm=blowfish2
 " Sets how many lines of history VIM has to remember
 set history=700
 set number 
