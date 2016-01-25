@@ -318,3 +318,35 @@ noremap hh <nop>
 noremap jj <nop>
 noremap kk <nop>
 noremap ll <nop>
+
+" Transparent editing of gpg encrypted files.
+augroup encrypted
+au!
+" First make sure nothing is written to ~/.viminfo while editing
+" an encrypted file.
+autocmd BufReadPre,FileReadPre      *.gpg,*.wiki set viminfo=
+" We don't want a swap file, as it writes unencrypted data to disk
+autocmd BufReadPre,FileReadPre      *.gpg,*.wiki set noswapfile
+" Switch to binary mode to read the encrypted file
+autocmd BufReadPre,FileReadPre      *.gpg,*.wiki set bin
+autocmd BufReadPre,FileReadPre      *.gpg,*.wiki let ch_save = &ch|set ch=2
+autocmd BufReadPre,FileReadPre      *.gpg,*.wiki let shsave=&sh
+autocmd BufReadPre,FileReadPre      *.gpg,*.wiki let &sh='sh'
+autocmd BufReadPre,FileReadPre      *.gpg,*.wiki let ch_save = &ch|set ch=2
+autocmd BufReadPost,FileReadPost    *.gpg,*.wiki '[,']!gpg2 --decrypt --default-recipient-self 2> /dev/null
+autocmd BufReadPost,FileReadPost    *.gpg,*.wiki let &sh=shsave
+" Switch to normal mode for editing
+autocmd BufReadPost,FileReadPost    *.gpg,*.wiki set nobin
+autocmd BufReadPost,FileReadPost    *.gpg,*.wiki let &ch = ch_save|unlet ch_save
+autocmd BufReadPost,FileReadPost    *.gpg,*.wiki execute ":doautocmd BufReadPost " . expand("%:r")
+" Convert all text to encrypted text before writing
+autocmd BufWritePre,FileWritePre    *.gpg,*.wiki set bin
+autocmd BufWritePre,FileWritePre    *.gpg,*.wiki let shsave=&sh
+autocmd BufWritePre,FileWritePre    *.gpg,*.wiki let &sh='sh'
+autocmd BufWritePre,FileWritePre    *.gpg,*.wiki '[,']!gpg2 --encrypt --default-recipient-self 2>/dev/null
+autocmd BufWritePre,FileWritePre    *.gpg,*.wiki let &sh=shsave
+" Undo the encryption so we are back in the normal text, directly
+" after the file has been written.
+autocmd BufWritePost,FileWritePost  *.gpg,*.wiki silent u
+autocmd BufWritePost,FileWritePost  *.gpg,*.wiki set nobin
+augroup END
