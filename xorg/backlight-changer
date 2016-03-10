@@ -13,8 +13,8 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
-brightness=$(cat /sys/class/backlight/gmux_backlight/actual_brightness)
+brightness=$(printf "%.0f\n" $(xbacklight))
 
 brightness=$(( $brightness + $1 ))
 
-echo $brightness | sudo tee /sys/class/backlight/gmux_backlight/brightness
+xbacklight -set $brightness
