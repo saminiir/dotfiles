@@ -1,0 +1,14 @@
+[Unit]
+Description=User suspend actions
+Before=sleep.target
+
+[Service]
+User=%I
+Type=simple
+Environment=DISPLAY=:0
+ExecStartPre= -/usr/sbin/modprobe -r thunderbolt; /usr/sbin/modprobe -r tg3; 
+ExecStart=/usr/bin/slock
+ExecStartPost=/usr/bin/sleep 1
+
+[Install]
+WantedBy=sleep.target

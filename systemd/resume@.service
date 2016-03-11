@@ -1,0 +1,11 @@
+[Unit]
+Description=User resume actions
+After=suspend.target
+
+[Service]
+User=%I
+Type=simple
+ExecStart=/usr/sbin/modprobe thunderbolt
+
+[Install]
+WantedBy=suspend.target
