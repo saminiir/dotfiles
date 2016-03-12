@@ -10,22 +10,6 @@ fi
 
 # User specific aliases and functions
 
-function ssh_init {
-  sshadd="ssh-add -t 3600"
-  ssh-add -l &>/dev/null
-  ret="$?"
-  if [ $ret == 2 ]; then
-    test -r ~/.ssh-agent && \
-      eval "$(<~/.ssh-agent)" >/dev/null
-  
-    ssh-add -l &>/dev/null
-    if [ "$?" == 2 ]; then
-      (umask 066; ssh-agent > ~/.ssh-agent)
-      eval "$(<~/.ssh-agent)" >/dev/null
-      $sshadd
-    fi
-  fi
-  if [ $ret == 1 ]; then
-    $sshadd
-  fi
-}
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
