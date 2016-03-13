@@ -1,0 +1,12 @@
+[Unit]
+Description=Discrete graphics off
+After=suspend.target hibernate.target hybrid-sleep.target
+Wants=local-system-resume.service
+Before=local-system-resume.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "echo OFF > /sys/kernel/debug/vgaswitcheroo/switch"
+
+[Install]
+WantedBy=suspend.target hibernate.target hybrid-sleep.target

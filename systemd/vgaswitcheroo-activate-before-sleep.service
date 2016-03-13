@@ -1,0 +1,13 @@
+[Unit]
+Description=Discrete graphics on
+Before=sleep.target
+Wants=local-system-hibernate.service
+Before=local-system-hibernate.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "echo DIGD > /sys/kernel/debug/vgaswitcheroo/switch"
+ExecStart=/bin/sh -c "echo ON > /sys/kernel/debug/vgaswitcheroo/switch"
+
+[Install]
+WantedBy=sleep.target

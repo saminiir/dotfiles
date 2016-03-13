@@ -1,11 +1,12 @@
 [Unit]
 Description=User resume actions
-After=suspend.target
+After=sleep.target
 
 [Service]
 User=%I
 Type=simple
 ExecStart=/usr/sbin/modprobe thunderbolt
+ExecStartPost=/usr/local/bin/xutils
 
 [Install]
-WantedBy=suspend.target
+WantedBy=sleep.target
