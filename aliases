@@ -1,5 +1,5 @@
 function ssh_init {
-  sshadd="ssh-add -t 3600"
+  sshadd="ssh-add -t 7200"
   ssh-add -l &>/dev/null
   ret="$?"
   if [ $ret == 2 ]; then
