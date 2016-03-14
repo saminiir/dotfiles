@@ -1,0 +1,9 @@
+#!/bin/sh
+
+setxkbmap -option ctrl:nocaps
+setxkbmap -option terminate:ctrl_alt_bksp
+setxkbmap -option altwin:swap_lalt_lwin
+setxkbmap us,fi -option grp:toggle
+xbindkeys
+xinput set-prop bcm5974 "libinput Accel Speed" 1
+xinput set-prop bcm5974 "libinput Tapping Enabled" 1
