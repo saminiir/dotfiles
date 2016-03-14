@@ -1,6 +1,6 @@
 [Unit]
 Description=Discrete graphics on
-Before=sleep.target
+Before=sleep.target poweroff.target reboot.target
 Wants=local-system-hibernate.service
 Before=local-system-hibernate.service
 
@@ -10,4 +10,4 @@ ExecStart=/bin/sh -c "echo DIGD > /sys/kernel/debug/vgaswitcheroo/switch"
 ExecStart=/bin/sh -c "echo ON > /sys/kernel/debug/vgaswitcheroo/switch"
 
 [Install]
-WantedBy=sleep.target
+WantedBy=sleep.target poweroff.target reboot.target
