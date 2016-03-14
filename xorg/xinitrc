@@ -1,3 +1,4 @@
 [ -f ~/.Xresources ] && xrdb ~/.Xresources
 source ~/dotfiles/xorg/xutils
+xbacklight -set 20
 exec dwm
