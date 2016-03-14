@@ -1,0 +1,8 @@
+[Unit]
+Description=Dropbox Service
+
+[Service]
+ExecStart=/home/saminiir/.dropbox-dist/dropboxd
+
+[Install]
+WantedBy=multi-user.target
