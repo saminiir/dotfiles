@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for i in /sys/bus/usb/devices/*; do [ -f "$i"/power/wakeup ] && cat $i/power/wakeup; done
+for i in /sys/bus/usb/devices/*; do [ -f "$i"/power/wakeup ] && echo disabled > $i/power/wakeup; done
+
+for i in /sys/bus/pci/devices/*; do [ -f "$i"/power/wakeup ] && cat $i/power/wakeup; done
+for i in /sys/bus/pci/devices/*; do [ -f "$i"/power/wakeup ] && echo disabled > $i/power/wakeup; done
+
+echo "LID0" | tee /proc/acpi/wakeup
