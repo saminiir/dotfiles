@@ -1,12 +1,12 @@
 function ssh_init {
   sshadd="ssh-add -t 7200"
-  ssh-add -l &>/dev/null
+  ssh-add -l >/dev/null
   ret="$?"
   if [ $ret == 2 ]; then
     test -r ~/.ssh-agent && \
       eval "$(<~/.ssh-agent)" >/dev/null
   
-    ssh-add -l &>/dev/null
+    ssh-add -l >/dev/null
     if [ "$?" == 2 ]; then
       (umask 066; ssh-agent > ~/.ssh-agent)
       eval "$(<~/.ssh-agent)" >/dev/null
