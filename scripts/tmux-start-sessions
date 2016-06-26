@@ -1,0 +1,7 @@
+#!/bin/bash
+
+tmux new-session -d -s vimwiki-ankicards 
+tmux new-session -d -s leisure
+tmux new-session -d -s work
+
+tmux send-keys -t vimwiki-ankicards 'vim ~/Dropbox/anki_cards/2016-01-xx-randomz-template' C-m
