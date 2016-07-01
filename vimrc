@@ -1,17 +1,10 @@
 set shell=/bin/bash
 
-call pathogen#infect() 
-call pathogen#helptags() 
-
 set nocompatible
 set t_Co=256
 set term=screen-256color
 
 set cul                                           " highlight current line
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set cm=blowfish2
 " Sets how many lines of history VIM has to remember
@@ -28,9 +21,6 @@ set autoread
 " Load matchit
 runtime macros/matchit.vim
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Add padding of 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -91,10 +81,6 @@ set nocursorcolumn
 set nocursorline
 syntax sync minlines=256
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Enable syntax highlighting
 syntax enable
 
@@ -107,17 +93,11 @@ set encoding=utf8
 set ffs=unix,dos,mac
 set ff=unix
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
 set noswapfile
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
 set expandtab
 
@@ -140,31 +120,17 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
 
-" Clear highlight
-nmap <silent> ,/ :nohlsearch<CR>
-
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
-
-" Enable paste mode to prevent auto-indentation
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
-set showmode
 
 " Specify the behavior when switching between buffers 
 try
@@ -181,31 +147,8 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
-
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
-
-" Syntastic 
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-let g:syntastic_ignore_files=['.*\.min\..*']
 
 " Navigate buffers
 nnoremap <silent> [b :bprevious<CR> 
@@ -218,31 +161,6 @@ nnoremap <silent> [c :cprev<CR>
 nnoremap <silent> ]c :cnext<CR> 
 nnoremap <silent> [C :cfirst<CR> 
 nnoremap <silent> ]C :clast<CR>
-
-set runtimepath^=~/.vim/bundle/ctrlp.vimset runtimepath^=~/.vim/bundle/ctrlp.vim
-
-" Ctrl-p options
-
-let g:ctrlp_regexp = 1
-let g:ctrlp_user_command = {
-  \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others'],
-    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-    \ },
-  \ 'fallback': 'find %s -type f'
-  \ }
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" Grep / Ag
-nmap <Leader>G :Ag <C-R><C-W><CR>
-
-" AnkiCard cloze-tag surrounding
-nnoremap <Leader>Sc ciw{{c1::<C-r>"}}<Esc>
-vnoremap <Leader>Sc c{{c1::<C-r>"}}<Esc>
 
 set tags=tags;/
 syntax on
