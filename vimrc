@@ -237,15 +237,6 @@ let g:ctrlp_user_command = {
 " program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
 
-" Vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/'},
-                    \ {'path': '~/vimwiki/leisure/'},
-                    \ {'path': '~/vimwiki/pomodoro/'},
-                    \ {'path': '~/vimwiki/projects/'},
-                    \ {'path': '~/vimwiki/software/'}]
-
-nmap <leader>tt <Plug>VimwikiToggleListItem
-
 " Grep / Ag
 nmap <Leader>G :Ag <C-R><C-W><CR>
 
