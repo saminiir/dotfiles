@@ -42,11 +42,11 @@
 "xbindkeys_show" 
   control+shift + q
 
-"~/dotfiles/xorg/backlight-changer -5"
+"/usr/bin/light -U 5"
     m:0x0 + c:232
     XF86MonBrightnessDown
 
-"~/dotfiles/xorg/backlight-changer 5"
+"/usr/bin/light -A 5"
     m:0x0 + c:233
     XF86MonBrightnessUp
 # set directly keycode (here control + f with my keyboard)
