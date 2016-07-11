@@ -7,7 +7,7 @@ xterm*metaSendsEscape: true
 ! xterm ----------------------------------------------------------------------
 
 xterm*VT100.geometry:     80x25
-xterm*faceName:           Terminus:style=Regular:size=11:antialias=false
+xterm*faceName:           Terminus:style=Regular:size=12:antialias=false
 xterm*background:         black
 xterm*foreground:         white
 xterm*font:              -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
