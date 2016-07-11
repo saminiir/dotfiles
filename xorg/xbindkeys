@@ -49,6 +49,15 @@
 "/usr/bin/light -A 5"
     m:0x0 + c:233
     XF86MonBrightnessUp
+
+"/usr/bin/amixer set Master 5%+"
+    XF86AudioRaiseVolume
+
+"/usr/bin/amixer set Master 5%-"
+    XF86AudioLowerVolume
+
+"/usr/bin/amixer set Master toggle"
+    XF86AudioMute
 # set directly keycode (here control + f with my keyboard)
 #"xterm"
 #  c:41 + m:0x4
