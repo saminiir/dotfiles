@@ -1,4 +1,9 @@
+xterm*ttyModes:         erase ^?
+xterm*VT100.Translations: \
+        #override <Key>BackSpace: string(0x7f) \n\
+                  <Key>Delete:    string(0x1b) string("[3~")
 xterm*reverseVideo: off
+xterm*metaSendsEscape: true
 ! xterm ----------------------------------------------------------------------
 
 xterm*VT100.geometry:     80x25
