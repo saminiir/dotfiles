@@ -5,6 +5,10 @@ set -u
 
 product=$(dmesg | sed -nr 's/.* Hardware name: ([^/]*).*/\1/p' | head -n 1)
 
+if [ -f /sys/devices/virtual/dmi/id/product_name ]; then 
+    product=$(cat /sys/devices/virtual/dmi/id/product_name)
+fi
+
 setxkbmap -option ctrl:nocaps
 setxkbmap -option terminate:ctrl_alt_bksp
 setxkbmap -layout us,fi -option grp:rshift_toggle
@@ -20,7 +24,7 @@ case "$product" in
         xinput set-prop bcm5974 "libinput Accel Speed" 1
         xinput set-prop bcm5974 "libinput Tapping Enabled" 1
         ;;
-    "Dell Inc. XPS 15 9550")
+    "XPS 15 9550")
         xinput set-prop "DLL06E4:01 06CB:7A13 Touchpad" "libinput Tapping Enabled" 1
         xinput set-prop "DLL06E4:01 06CB:7A13 Touchpad" "libinput Accel Speed" 1
         ;;
