@@ -16,6 +16,7 @@
 
 ;; Save all backup file in this directory.
 (setq backup-directory-alist (quote ((".*" . "~/.emacs_backups/"))))
+(setq auto-save-file-name-transforms `((".*" "~/.emacs_backups/" t)))
 
 (setq linum-format "%4d \u2502 ")
 (setq indent-tabs-mode nil)
