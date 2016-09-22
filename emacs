@@ -47,3 +47,9 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
+
+;; EasyPG
+(require 'epa-file)
+(epa-file-enable)
+(setq epa-file-name-regexp "\\.\\(gpg\\|asc\\|org\\)$")
+(epa-file-name-regexp-update)
