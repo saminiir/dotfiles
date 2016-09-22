@@ -6,8 +6,30 @@ xterm*reverseVideo: off
 xterm*metaSendsEscape: true
 ! xterm ----------------------------------------------------------------------
 
+xterm*termName: xterm-256color
+
 xterm*VT100.geometry:     80x25
-xterm*faceName:           Terminus:style=Regular:size=12:antialias=false
+xterm*VT100.color1:       Tomato
+xterm*VT100.color2:       MediumSeaGreen
+xterm*VT100.color3:       Gold
+xterm*VT100.color4:       CornflowerBlue
+xterm*VT100.color5:       Violet
+xterm*VT100.color9:       Tomato
+xterm*VT100.color10:       MediumSeaGreen
+xterm*VT100.color11:       Gold
+xterm*VT100.color12:       CornflowerBlue
+xterm*VT100.color13:       Violet
+xterm*VT100.color14:       SkyBlue
+xterm*VT100.color15:       GainsBoro
+xterm*VT100.colorBDMode:  false
+xterm*allowBoldFonts:     false
+! Forbid bold font faces; bold type is light blue.
+xterm*colorBDMode: true
+xterm*colorBD: rgb:82/a4/d3
+! ! Do not underscore text, underlined text is white.
+xterm*colorULMode: true
+xterm*colorUL: rgb:e4/e4/e4
+xterm*faceName:           Terminus:style=Regular:size=13:antialias=false
 xterm*background:         black
 xterm*foreground:         white
 xterm*font:              -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
