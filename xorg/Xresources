@@ -44,6 +44,7 @@ xterm*rightScrollBar:     true
 xterm*jumpScroll:         true
 xterm*multiScroll:        true
 xterm*toolBar:            false
+xterm*fullscreen:         never
 
 UXTerm*reverseVideo: off
 UXTerm*background: black
