@@ -37,3 +37,13 @@
   (lambda () (window-numbering-mode 1)))
 
 (my-window-numbering-mode 1)
+
+(require 'org)
+(setq org-directory "~/Dropbox/org")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(add-to-list 'org-agenda-files (expand-file-name "~/Dropbox/org/"))
+(setq org-refile-targets '((org-agenda-files :maxlevel . 2)))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-iswitchb)
