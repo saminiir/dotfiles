@@ -19,14 +19,15 @@
 (setq auto-save-file-name-transforms `((".*" "~/.emacs_backups/" t)))
 
 (setq linum-format "%4d \u2502 ")
-(setq indent-tabs-mode nil)
 
 (defun my-c-mode-hook ()
   (setq c-basic-offset 4)
   (setq c-default-style "linux")
+  (setq indent-tabs-mode nil)
   (cscope-minor-mode)
   )
 (add-hook 'c-mode-hook 'my-c-mode-hook)
+(add-hook 'c++-mode-hook 'my-c-mode-hook)
 
 (define-globalized-minor-mode my-linum-mode linum-mode
   (lambda () (linum-mode 1)))
@@ -47,9 +48,26 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
-
+(setq org-todo-keywords
+    '((sequence "TODO" "IN-PROGRESS" "|" "DONE")))
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+    
 ;; EasyPG
 (require 'epa-file)
 (epa-file-enable)
 (setq epa-file-name-regexp "\\.\\(gpg\\|asc\\|org\\)$")
 (epa-file-name-regexp-update)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(indent-tabs-mode t)
+ '(package-selected-packages (quote (xcscope window-numbering org markdown-mode magit))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight normal :height 138 :width normal)))))
